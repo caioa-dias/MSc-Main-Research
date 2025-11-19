@@ -9,7 +9,7 @@ Version:                1.1
 
 Description:
     This script performs a coupled 3D and 2D aerodynamic analysis. 
-    1.  An AVL 3D analysis is performed to obtain the flow cases (Re, Cl, AoA) at each section (y) of the 3D wing.
+    1. An AVL 3D analysis is performed to obtain the flow cases (Re, Cl, AoA) at each section (y) of the 3D wing.
     2. Each case is passed to the 2D analysis, obtaining the pressure coefficient distribution for each section.
         
 Dependencies:
@@ -65,7 +65,7 @@ def analysis3D(input_file: str, v_range: list):
 
     # 2. Loading and merging the AVL data for each AoA case:
     for i in range(0, n_conditions):
-        case = pd.read_csv(f"utils/AoA{i + AoA_i}.csv", header=16, nrows=10, sep=r'\s+', usecols=['Yle', 'cl'])
+        case = pd.read_csv(f"utils/AoA{i + AoA_i}.csv", header=16, nrows=80, sep=r'\s+', usecols=['Yle', 'cl'])
         case['AoA'] = i + AoA_i
         AoA.append(case)
         os.remove(f"utils/AoA{i + AoA_i}.csv")
@@ -119,7 +119,7 @@ def analysis2D(Re:float, cl:float, AoA:float, y:float, airfoil="NACA 23015"):
         subprocess.call("xfoil.exe < xfoil_input.in", shell=True, stdout=FNULL, stderr=subprocess.STDOUT, cwd="utils")
 
     # 3. Wait to the XFoil analysis to be written and remove the input file:
-    time.sleep(0.05)
+    time.sleep(0.2)
     os.remove(input_path_2d)
 
     # 4. Read the XFoil results data filtering for the experimental measurements points:
@@ -127,7 +127,7 @@ def analysis2D(Re:float, cl:float, AoA:float, y:float, airfoil="NACA 23015"):
     xfoil_data = xfoil_data.iloc[experimental_taps].reset_index(drop=True)
 
     # 5. Wait for the dataframe to be assembled and remove the output file:
-    time.sleep(0.05)
+    time.sleep(0.2)
     os.remove(output_path_2d)
 
     # 6. Assemble the final dataset with a single row:
@@ -147,7 +147,7 @@ def main(new_cases: bool, v_range: list, AoA_filter: bool, AoA_range: list):
 
     # Defining standard parameters:
     input_file_3d = "ExperimentalCases.in"
-    output_path = "PressureDistributionData.csv"
+    output_path = "Numerical-PressureDistributionData.csv"
     Results = []
 
     # Deletes the output file if it exists to avoid overwriting:
@@ -184,4 +184,4 @@ def main(new_cases: bool, v_range: list, AoA_filter: bool, AoA_range: list):
 
 
 if __name__ == "__main__":
-    main(new_cases=True, v_range=[8, 11, 1], AoA_filter=True, AoA_range=[-5, 10])
+    main(new_cases=True, v_range=[8, 31, 1], AoA_filter=True, AoA_range=[-5, 10])

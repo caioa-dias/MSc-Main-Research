@@ -9,7 +9,7 @@ ExperimentalModel
 #
 SURFACE
 Wing
-30   1.0   10   -2.0  ! Nchord   Cspace   Nspan   Sspace
+30   1.0   80   -2.0  ! Nchord   Cspace   Nspan   Sspace
 
 YDUPLICATE
 0.00000 
