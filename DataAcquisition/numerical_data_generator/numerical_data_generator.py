@@ -74,7 +74,7 @@ def analysis3D(input_file: str, v_range: list):
     # 3. Merging the Reynolds Number information in the dataset for each AoA polar:
     for i in range(v_range[0], v_range[1], v_range[2]):
         case = flow_cases.copy()
-        case['Re'] = 1.11 * i * 0.2165 / 0.0000183714
+        case['Re'] = int(1.11 * i * 0.2165 / 0.0000183714)
         Re.append(case)
     flow_cases = pd.concat(Re, ignore_index=True)
 
