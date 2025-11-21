@@ -33,7 +33,7 @@ import numpy as np
 
 
 
-def data_surface_visualization(data:pd.DataFrame, Re:int, AoA:int, is_pred:bool, out_path:str):
+def data_surface_visualization(data:pd.DataFrame, Re:int, AoA:int, is_pred:bool, surface:str, out_path:str):
     """
     Performs a 3D visualization of the pressure coefficient (Cp) distribution over the wing surface
     for a specified Reynolds Number (Re) and Angle of Attack (AoA).
@@ -44,6 +44,7 @@ def data_surface_visualization(data:pd.DataFrame, Re:int, AoA:int, is_pred:bool,
         Re: Reynolds Number for the aimed flight condition.
         AoA: Angle of Attack for the aimed flight condition.
         is_pred: If True, assumes that the data is the output of a predictive model and not the real data.
+        surface: The surface to be visualized, either 'upper' or 'lower'.
         out_path: Path and name to save the output image (.png).
 
     Returns:
@@ -56,6 +57,14 @@ def data_surface_visualization(data:pd.DataFrame, Re:int, AoA:int, is_pred:bool,
     else:
         name = 'Numerical'
 
+    # Defining surface parameters:
+    if surface == 'upper':
+        title_text = f'{name} Pressure Coefficient Distribution at Re = {Re} and AoA = {AoA}° - Upper Surface'
+        view_elev = 30
+    else:
+        title_text = f'{name} Pressure Coefficient Distribution at Re = {Re} and AoA = {AoA}° - Lower Surface'
+        view_elev = -30
+    
     # 1. Filters the data for the specific input flight condition (Re and AoA):
     filtered_cond = data[(data['Re'] == Re) & (data['AoA'] == AoA)]
 
@@ -83,8 +92,7 @@ def data_surface_visualization(data:pd.DataFrame, Re:int, AoA:int, is_pred:bool,
     ax.set_box_aspect([0.2165, 0.766, 0.022])
 
     # 6. Setting the axes properties:
-    ax.set_title(f'{name} Pressure Coefficient Distribution at Re = {Re} and AoA = {AoA}°',
-                 fontname='Times New Roman', fontsize=14, fontweight='bold', y=0.87)
+    fig.suptitle(title_text, fontname='Times New Roman', fontsize=14, fontweight='bold', y=0.77)
     ax.set_axis_off()
 
     # 7. Setting the pressure coefficient colormap:
@@ -109,13 +117,13 @@ def data_surface_visualization(data:pd.DataFrame, Re:int, AoA:int, is_pred:bool,
 
     # 11. Saves and shows the figure:
     print(f"\nPlot saved as {out_path}\n")
-    ax.view_init(elev=30, azim=-130)
+    ax.view_init(elev=view_elev, azim=-130)
     plt.savefig(out_path, dpi=300)
     plt.show()
 
     return
 
-def main(data_path: str, Re: int, AoA: int, is_pred: bool, out_path: str):
+def main(data_path: str, Re: int, AoA: int, is_pred: bool, surface:str, out_path: str):
     """
     Main execution workflow: Loads the data and calls the 3D visualization function.
     """
@@ -127,7 +135,7 @@ def main(data_path: str, Re: int, AoA: int, is_pred: bool, out_path: str):
     print("Data loaded successfully.")
 
     # 2. Calls the 3D visualization function:
-    data_surface_visualization(data, Re, AoA, is_pred, out_path)
+    data_surface_visualization(data, Re, AoA, is_pred, surface, out_path)
     
     return
 
@@ -140,7 +148,8 @@ if __name__ == "__main__":
     REYNOLDS_NUMBER = 235456
     ANGLE_OF_ATTACK = 10
     IS_PREDICTION_DATA = False
-    OUTPUT_FILE = f"SurfacePressure_Re{REYNOLDS_NUMBER}_AoA{ANGLE_OF_ATTACK}.png"
+    SURFACE = 'upper'
+    OUTPUT_FILE = f"SurfacePressure_Re{REYNOLDS_NUMBER}_AoA{ANGLE_OF_ATTACK}_{SURFACE}.png"
 
     # 2. Calls the main function:
-    main(DATA_FILE, REYNOLDS_NUMBER, ANGLE_OF_ATTACK, IS_PREDICTION_DATA, OUTPUT_FILE)
+    main(DATA_FILE, REYNOLDS_NUMBER, ANGLE_OF_ATTACK, IS_PREDICTION_DATA, SURFACE, OUTPUT_FILE)

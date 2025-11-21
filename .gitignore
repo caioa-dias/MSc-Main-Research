@@ -1,1 +1,6 @@
-*.csv
+# --- Python (Bytecode and Caches) ---
+__pycache__/
+*.pyc
+
+# --- Image Outputs ---
+*.png

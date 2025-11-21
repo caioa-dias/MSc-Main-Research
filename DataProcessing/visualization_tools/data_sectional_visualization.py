@@ -92,8 +92,8 @@ def data_sectional_visualization(data:pd.DataFrame, Re:int, AoA:int, scatter:boo
     ax.zaxis.set_rotate_label(False)
     ax.zaxis.label.set_rotation(90)
     ax.set_zlim(1, -3.5) 
-    ax.set_title(f'{name} Pressure Coefficient Distribution at Re = {Re} and AoA = {AoA}°',
-                  fontname='Times New Roman', fontsize=14, fontweight='bold', y=1.05)
+    fig.suptitle(f'{name} Pressure Coefficient Distribution at Re = {Re} and AoA = {AoA}°',
+                  fontname='Times New Roman', fontsize=14, fontweight='bold', y = 0.88)
 
     # 7. Plots the measurement points as scatter plots if required:
     if scatter == True:
@@ -102,7 +102,7 @@ def data_sectional_visualization(data:pd.DataFrame, Re:int, AoA:int, scatter:boo
                                   edgecolors='black', linewidths=0.5,
                                   norm=TwoSlopeNorm(vmin=-3.5, vcenter=0, vmax=1),
                                   depthshade=True)
-        cbar = fig.colorbar(scatter_plot, shrink=0.5, aspect=12)
+        cbar = fig.colorbar(scatter_plot, shrink=0.5, aspect=12, pad=0.1)
         cbar.set_label('Pressure Coefficient ($C_p$)', labelpad=10, fontname='Times New Roman', fontsize=12)
 
     # 8. Plots the pressure distribution lines for each section:

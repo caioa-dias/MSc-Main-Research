@@ -8,8 +8,8 @@ AoA = 10
 is_pred = False
 scatter = True
 is_exp = False
-out_path = f"plots/SurfacePressure_Re{Re}_AoA{AoA}.png"
-#out_path = f"plots/SectionalPressure_Re{Re}_AoA{AoA}.png"
+#out_path = f"plots/SurfacePressure_Re{Re}_AoA{AoA}.png"
+out_path = f"plots/SectionalPressure_Re{Re}_AoA{AoA}.png"
 
-surf_vis.main(data_path, Re, AoA, is_pred, out_path)
-#sec_vis.main(data_path, Re, AoA, scatter, is_exp, out_path)
+#surf_vis.main(data_path, Re, AoA, is_pred, out_path)
+sec_vis.main(data_path, Re, AoA, scatter, is_exp, out_path)
