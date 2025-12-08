@@ -18,8 +18,8 @@ Dependencies:
     - numpy
 
 Future implementations:
-    >>> Create a new function named data_comparison_visualization that employs the experimental and 
-    numerical datasets.
+    >>> ALL IMPLEMENTATIONS DONE!
+    >>> retirar o is_exp
 --------------------------------------------------------------------------------------------------------
 """
 
@@ -71,7 +71,7 @@ def data_sectional_visualization(data:pd.DataFrame, Re:int, AoA:int, scatter:boo
     # y -> Span position in mm.
     span_pos = filtered_cond['y']
     # z -> Pressure coefficient.
-    cp_data = filtered_cond.iloc[:,4:].to_numpy()    
+    cp_data = filtered_cond.iloc[:,4:35].to_numpy()    
 
     # 4. Setting the data for the 3D plot:
     X_grid, Y_grid = np.meshgrid(chord_pos, span_pos)
@@ -142,10 +142,10 @@ if __name__ == "__main__":
     # 1. Sets the run parameters:
     DATA_FILE = 'Numerical-PressureDistributionData.csv'
     REYNOLDS_NUMBER = 235456
-    ANGLE_OF_ATTACK = 7
+    ANGLE_OF_ATTACK = 10
     ENABLE_SCATTER = True
     IS_EXPERIMENTAL_DATA = False
-    OUTPUT_FILE = f"SectionalPressure_Re{REYNOLDS_NUMBER}_AoA{ANGLE_OF_ATTACK}.png"
+    OUTPUT_FILE = f"plots/SectionalPressure_Re{REYNOLDS_NUMBER}_AoA{ANGLE_OF_ATTACK}.png"
 
     # 2. Calls the main function:
     main(DATA_FILE, REYNOLDS_NUMBER, ANGLE_OF_ATTACK, ENABLE_SCATTER, IS_EXPERIMENTAL_DATA, OUTPUT_FILE)

@@ -149,7 +149,7 @@ if __name__ == "__main__":
     ANGLE_OF_ATTACK = 10
     IS_PREDICTION_DATA = False
     SURFACE = 'upper'
-    OUTPUT_FILE = f"SurfacePressure_Re{REYNOLDS_NUMBER}_AoA{ANGLE_OF_ATTACK}_{SURFACE}.png"
+    OUTPUT_FILE = f"plots/SurfacePressure_Re{REYNOLDS_NUMBER}_AoA{ANGLE_OF_ATTACK}_{SURFACE}.png"
 
     # 2. Calls the main function:
     main(DATA_FILE, REYNOLDS_NUMBER, ANGLE_OF_ATTACK, IS_PREDICTION_DATA, SURFACE, OUTPUT_FILE)
