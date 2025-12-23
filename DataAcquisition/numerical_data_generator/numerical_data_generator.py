@@ -24,6 +24,7 @@ Future implementations:
     >>> Implement a routine for generalize analysis3D.
     >>> Substitute the Reynolds Number for the experimental ones.
     >>> Implement the analysis3D for the experimental cases Reynolds.
+    >>> Implement the consideration for x and y as percentage and not literal values (keeps between 0 and 1)
 --------------------------------------------------------------------------------------------------------
 """
 
@@ -105,13 +106,9 @@ def analysis2D(Re:float, cl:float, AoA:float, y:float, airfoil="NACA 23015"):
     input_path_2d = "utils/xfoil_input.in"
     output_path_2d = "utils/cp_data.csv"
 
-    # Defining the XFoils panels index that represents the experimental measurements:
-    experimental_taps = [8, 14, 21, 27, 33, 39, 45, 50, 55, 60, 65, 71, 77, 84, 93, 103, 111, 119, 126, 
-                        132, 137, 141, 145, 150, 155, 161, 167, 173, 179, 186, 192]
-
     # 1. Create a XFoil Input File
     xfoil_file = open("utils/xfoil_input.in", 'w')
-    xfoil_file.write(f"PLOP\nG F\n\n{airfoil}\nPPAR\nN 201\n\n\nOPER\nVPAR\nN 7\n\nVISC {Re:.0f}\nITER 400\nCL {cl:.3f}\ncpwr\ncp_data.csv\n\nQUIT\n")
+    xfoil_file.write(f"PLOP\nG F\n\n{airfoil}\nPPAR\nN 240\n\n\nOPER\nVPAR\nN 7\n\nVISC {Re:.0f}\nITER 400\nCL {cl:.3f}\ncpwr\ncp_data.csv\n\nQUIT\n")
     xfoil_file.close()
 
     # 2. Run XFoil supressing the output:
@@ -124,7 +121,7 @@ def analysis2D(Re:float, cl:float, AoA:float, y:float, airfoil="NACA 23015"):
 
     # 4. Read the XFoil results data filtering for the experimental measurements points:
     xfoil_data = pd.read_csv(output_path_2d, skiprows=3, sep=r"\s+", names=['x', 'y', 'cp'], usecols=['x', 'cp'])
-    xfoil_data = xfoil_data.iloc[experimental_taps].reset_index(drop=True)
+    xfoil_data = xfoil_data.iloc[::2].reset_index(drop=True)
 
     # 5. Wait for the dataframe to be assembled and remove the output file:
     time.sleep(0.2)

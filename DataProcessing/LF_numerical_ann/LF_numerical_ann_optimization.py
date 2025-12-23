@@ -4,8 +4,8 @@
 Function:               LF_numerical_ann_optimization
 Author:                 Caio Dias Filho
 Creation date:          2025-12-02
-Last modification:      2025-12-08
-Version:                1.0
+Last modification:      2025-12-09
+Version:                1.1
 
 Description:
     This script performs the architecture optimization of an Artificial Neural Network (ANN) that predicts
@@ -18,8 +18,8 @@ Dependencies:
     - logging
     - os
     - matplotlib
+    - functools
     - typing
-    - pathlib
     - seaborn
     - pandas
     - numpy
@@ -44,8 +44,8 @@ warnings.filterwarnings("ignore")
 
 # Standard libraries
 from matplotlib import pyplot as plt
+from functools import partial
 from typing import Tuple
-from pathlib import Path
 import seaborn as sns
 import pandas as pd
 import numpy as np
@@ -81,7 +81,7 @@ print(f'\nGlobal seed set to: {SEED}')
 
 
 
-def load_and_preprocess_data(filepath:str, random_state:int):
+def load_and_preprocess_data(data_raw:pd.DataFrame, random_state:int):
     """
     Loads the dataset ans splits into training and testing sets based on wing condiitions, aiming 
     to improve the model's generalization capability. Also splits the dataset into features (X) and
@@ -89,7 +89,7 @@ def load_and_preprocess_data(filepath:str, random_state:int):
     MinMaxScaler and 'Cp' is scaled using MaxAbsScaler.
     
     Args:
-        filepath: Path to the .csv file containing the dataset.
+        data_raw: DataFrame containing the dataset.
         random_state: Seed for random shuffle.
 
     Returns:
@@ -98,8 +98,7 @@ def load_and_preprocess_data(filepath:str, random_state:int):
     """
 
     # 1. Loading the dataset:
-    data_path = Path.cwd() / filepath
-    data = pd.read_csv(data_path, sep=',')
+    data = data_raw.copy()
 
     # 2. Create identifier for wing condition (assuming 80 sections per condition):
     wing_sections = 80
@@ -172,7 +171,7 @@ def build_model(trial: optuna.Trial, input_shape: Tuple[int], output_shape: int)
         model.add(Dense(units, activation=activation))
 
         if reg_type == 'Dropout':
-                model.add(Dropout(dropout_rate))
+            model.add(Dropout(dropout_rate))
         if reg_type == 'Batch Normalization':
             model.add(BatchNormalization())
 
@@ -181,12 +180,13 @@ def build_model(trial: optuna.Trial, input_shape: Tuple[int], output_shape: int)
 
     return model
 
-def objective(trial: optuna.Trial):
+def objective(trial: optuna.Trial, data_raw: pd.DataFrame):
     """
     Objective function for the Optuna hyperparameter optimization.
 
     Args:
         trial: Optuna trial object.
+        data_raw: DataFrame containing the dataset.
 
     Returns:
         mean_loss (float): Mean validation loss value for the current trial, considering training 
@@ -197,8 +197,7 @@ def objective(trial: optuna.Trial):
     clear_session()
 
     # 2. Loading and preprocessing the data to build the base model:
-    X_train, Y_train = load_and_preprocess_data('Numerical-PressureDistributionData.csv', 
-            random_state=42)
+    X_train, Y_train = load_and_preprocess_data(data_raw, random_state=42)
     base_model = build_model(trial, input_shape=(X_train.shape[1],), output_shape=Y_train.shape[1])
 
     # 3. Defining standard parameters:
@@ -209,8 +208,7 @@ def objective(trial: optuna.Trial):
     for seed in seeds:
 
         # Loading and preprocessing the data:
-        X_train, Y_train = load_and_preprocess_data('Numerical-PressureDistributionData.csv', 
-            random_state=seed)
+        X_train, Y_train = load_and_preprocess_data(data_raw, random_state=seed)
 
         # Cloning the base model (copying its architecture without weight values):
         model = clone_model(base_model)
@@ -254,8 +252,8 @@ def objective(trial: optuna.Trial):
 
 def plot_parameter_impact(study: optuna.Study, param_name: str, x_label: str, save_path:str):
     """
-    Plots the relationship between the parameter and the loss value. Automatic selects the plot style based
-    on the parameter type (categorical or numerical).
+    Plots the relationship between the parameter and the loss value. Automatic selects the plot style 
+    based on the parameter type (categorical or numerical).
 
     Args:
         study: Optuna study object.
@@ -296,8 +294,8 @@ def plot_parameter_impact(study: optuna.Study, param_name: str, x_label: str, sa
         ax.yaxis.get_offset_text().set_fontsize(12)
         
         # Plotting the curves: 
-        sns.boxplot(data=data_plot, x=parameter, y='value', color='#4682B4', linecolor='black', width=0.5, 
-            showfliers=False, linewidth=1.2)
+        sns.boxplot(data=data_plot, x=parameter, y='value', color='#4682B4', linecolor='black', 
+            width=0.5, showfliers=False, linewidth=1.2)
 
         # Saving the plot:
         plt.tight_layout()
@@ -319,9 +317,9 @@ def save_results(study: optuna.Study, execution_time: float):
         None. Saves the plots as .png files and the optimization report as .txt file.
     """
     
-    # =============================================================================================================
+    # ===================================================================================================
     # 1. VISUALIZATION: LOSS OPTIMIZATION HISTORY
-    # =============================================================================================================
+    # ===================================================================================================
     # Setting plot parameters:
     with plt.rc_context({'font.family': 'serif', 'font.serif': ['Times New Roman'], 
         'mathtext.fontset': 'stix'}):
@@ -356,14 +354,14 @@ def save_results(study: optuna.Study, execution_time: float):
 
         # Saving the plot:
         plt.tight_layout()
-        plt.savefig('LF_numerical_ann/plots/optimization/loss_optimization_history.png', dpi=300)
+        plt.savefig('LF_numerical_ann/plots-optimization/loss_optimization_history.png', dpi=300)
         plt.close()
         print(f'Plot saved as LF_numerical_ann/plots/optimization/loss_optimization_history.png\n')
 
 
-    # =============================================================================================================
+    # ===================================================================================================
     # 2. VISUALIZATION: PARAMETER IMPORTANCE
-    # =============================================================================================================
+    # ===================================================================================================
     # Setting plot parameters:
     with plt.rc_context({'font.family': 'serif', 'font.serif': ['Times New Roman'], 
         'mathtext.fontset': 'stix'}):
@@ -404,14 +402,14 @@ def save_results(study: optuna.Study, execution_time: float):
 
         # Saving the plot:
         plt.tight_layout()
-        plt.savefig('LF_numerical_ann/plots/optimization/hyperparameter_importance.png', dpi=300)
+        plt.savefig('LF_numerical_ann/plots-optimization/hyperparameter_importance.png', dpi=300)
         plt.close()
         print(f'Plot saved as LF_numerical_ann/plots/optimization/hyperparameter_importance.png\n')
 
 
-    # =============================================================================================================
+    # ===================================================================================================
     # 3. TEXT FILE: MODEL OPTIMIZATION REPORT
-    # =============================================================================================================
+    # ===================================================================================================
     # Generate the model's optimization report:
     data = study.trials_dataframe()
     content = f"""
@@ -447,48 +445,64 @@ def main(n_trials: int):
     Main execution workflow: Loads the data, calls the optimization function and saves the plots and results.
     """
 
-    # 1. Starts the timer for recording execution time:
+    # 1. Loading the dataset:
+    print("\nLoading dataset into memory...")
+    filepath = 'Numerical-PressureDistributionData.csv'
+    data_raw = pd.read_csv(filepath, sep=',')
+
+    # 2. Starts the timer for recording execution time:
     start_time = time.time()
 
-    # 2. Calls the optimization function:
+    # 3. Calls the optimization function:
     print('\nStarting optimization process...\n')
     study = optuna.create_study(direction='minimize', sampler=optuna.samplers.TPESampler(seed=SEED), 
         pruner=optuna.pruners.MedianPruner(n_startup_trials=10, n_warmup_steps=50, interval_steps=5), study_name='LF_numerical_ann_optimization')
-    study.optimize(objective, n_trials=n_trials)
+    objective_with_data = partial(objective, data_raw=data_raw)
+    study.optimize(objective_with_data, n_trials=n_trials)
 
-    # 3. Finishes the timer:
+    # 4. Finishes the timer:
     end_time = time.time()
     execution_time = end_time - start_time
 
-    # 4. Saves results:
+    # 5. Saves results:
     plot_parameter_impact(study, 'activation', 'Activation Function', 
-        'LF_numerical_ann/plots/optimization/param_impact_activation.png')
+        'LF_numerical_ann/plots-optimization/param_impact_activation.png')
     plot_parameter_impact(study, 'n_layers', 'Network Depth', 
-        'LF_numerical_ann/plots/optimization/param_impact_network_depth.png')
+        'LF_numerical_ann/plots-optimization/param_impact_network_depth.png')
     plot_parameter_impact(study, 'reg_type', 'Regularization Strategy', 
-        'LF_numerical_ann/plots/optimization/param_impact_reg_type.png')
+        'LF_numerical_ann/plots-optimization/param_impact_reg_type.png')
     plot_parameter_impact(study, 'optimizer', 'Optimizer', 
-        'LF_numerical_ann/plots/optimization/param_impact_optimizer.png')
+        'LF_numerical_ann/plots-optimization/param_impact_optimizer.png')
     plot_parameter_impact(study, 'batch_size', 'Batch Size', 
-        'LF_numerical_ann/plots/optimization/param_impact_batch_size.png')
+        'LF_numerical_ann/plots-optimization/param_impact_batch_size.png')
     plot_parameter_impact(study, 'learning_rate', 'Learning Rate', 
-        'LF_numerical_ann/plots/optimization/param_impact_learning_rate.png')
+        'LF_numerical_ann/plots-optimization/param_impact_learning_rate.png')
     plot_parameter_impact(study, 'units_layer0', '1st Layer Neurons', 
-        'LF_numerical_ann/plots/optimization/param_impact_1st_layer_neurons.png')
+        'LF_numerical_ann/plots-optimization/param_impact_1st_layer_neurons.png')
     plot_parameter_impact(study, 'units_layer1', '2nd Layer Neurons', 
-        'LF_numerical_ann/plots/optimization/param_impact_2nd_layer_neurons.png')
+        'LF_numerical_ann/plots-optimization/param_impact_2nd_layer_neurons.png')
     plot_parameter_impact(study, 'units_layer2', '3rd Layer Neurons', 
-        'LF_numerical_ann/plots/optimization/param_impact_3rd_layer_neurons.png')
+        'LF_numerical_ann/plots-optimization/param_impact_3rd_layer_neurons.png')
     plot_parameter_impact(study, 'units_layer3', '4th Layer Neurons', 
-        'LF_numerical_ann/plots/optimization/param_impact_4th_layer_neurons.png')
+        'LF_numerical_ann/plots-optimization/param_impact_4th_layer_neurons.png')
     plot_parameter_impact(study, 'units_layer4', '5th Layer Neurons', 
-        'LF_numerical_ann/plots/optimization/param_impact_5th_layer_neurons.png')
+        'LF_numerical_ann/plots-optimization/param_impact_5th_layer_neurons.png')
     plot_parameter_impact(study, 'units_layer5', '6th Layer Neurons', 
-        'LF_numerical_ann/plots/optimization/param_impact_6th_layer_neurons.png')
+        'LF_numerical_ann/plots-optimization/param_impact_6th_layer_neurons.png')
+    plot_parameter_impact(study, 'units_layer6', '7th Layer Neurons', 
+        'LF_numerical_ann/plots-optimization/param_impact_6th_layer_neurons.png')
+    plot_parameter_impact(study, 'units_layer7', '8th Layer Neurons', 
+        'LF_numerical_ann/plots-optimization/param_impact_6th_layer_neurons.png')
+    plot_parameter_impact(study, 'units_layer8', '9th Layer Neurons', 
+        'LF_numerical_ann/plots-optimization/param_impact_6th_layer_neurons.png')
     plot_parameter_impact(study, 'dropout_rate', 'Dropout Rate', 
-        'LF_numerical_ann/plots/optimization/param_impact_dropout_rate.png')
+        'LF_numerical_ann/plots-optimization/param_impact_dropout_rate.png')
     save_results(study, execution_time)
     print('Optimization completed.\n')
+
+    # 6. Saves the study data as a .csv file:
+    data = study.trials_dataframe()
+    data.to_csv("LF_numerical_ann/LF_numerical_ann-optimization_trials.csv", index=False)
 
     return
 
@@ -496,7 +510,7 @@ def main(n_trials: int):
 
 if __name__== "__main__":
     # 1. Sets the number of trials:
-    N_TRIALS = 10
+    N_TRIALS = 200
 
     # 2. Calls the main function:
     main(N_TRIALS)
