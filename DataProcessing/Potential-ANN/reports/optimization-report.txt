@@ -1,0 +1,38 @@
+
+PARAMETER OPTIMIZATION REPORT - LF_NUMERICAL_ANN
+===========================================================
+Date: 2026-02-12 17:20:59
+Execution Time: 2179.11 seconds
+
+1. BEST MODEL RESULTS
+----------------------------------
+Best Mean Validation Loss (MSE): 0.000334
+Total Trials: 6
+Pruned Trials: 0
+                
+Best Hyperparameters:
+- n_layers                 : 4
+- reg_type                 : Dropout
+- activation               : swish
+- weight_initializer       : lecun_normal
+- dropout_rate             : 0.05
+- units_layer0             : 256
+- units_layer1             : 224
+- units_layer2             : 64
+- units_layer3             : 32
+- optimizer                : Adam
+- learning_rate            : 0.001
+- batch_size               : 32
+
+2. HYPERPARAMETER IMPORTANCE
+----------------------------------
+- batch_size               : 0.2636
+- units_layer0             : 0.2561
+- n_layers                 : 0.1372
+- units_layer1             : 0.1219
+- learning_rate            : 0.0752
+- optimizer                : 0.0501
+- activation               : 0.0436
+- reg_type                 : 0.0329
+- weight_initializer       : 0.0194
+==========================================================

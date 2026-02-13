@@ -1,0 +1,550 @@
+
+ ---------------------------------------------
+ Run case  1:  AoA-6                 
+
+ alpha        ->  alpha       =   -6.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.00000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000     
+
+ ---------------------------------------------
+ Run case  2:  AoA-5                 
+
+ alpha        ->  alpha       =   -5.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000
+
+---------------------------------------------
+ Run case  3:  AoA-4                 
+
+ alpha        ->  alpha       =   -4.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000        
+
+---------------------------------------------
+ Run case  4:  AoA-3                 
+
+ alpha        ->  alpha       =   -3.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000    
+
+---------------------------------------------
+ Run case  5:  AoA-2                 
+
+ alpha        ->  alpha       =   -2.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000       
+
+---------------------------------------------
+ Run case  6:  AoA-1                 
+
+ alpha        ->  alpha       =   -1.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000     
+
+---------------------------------------------
+ Run case  7:  AoA0                 
+
+ alpha        ->  alpha       =   0.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000                         
+
+---------------------------------------------
+ Run case  8:  AoA1                 
+
+ alpha        ->  alpha       =   1.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000     
+
+---------------------------------------------
+ Run case  9:  AoA2                 
+
+ alpha        ->  alpha       =   2.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000     
+
+---------------------------------------------
+ Run case  10:  AoA3                 
+
+ alpha        ->  alpha       =   3.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000     
+
+---------------------------------------------
+ Run case  11:  AoA4                 
+
+ alpha        ->  alpha       =   4.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000   
+
+---------------------------------------------
+ Run case  12:  AoA5                 
+
+ alpha        ->  alpha       =   5.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000   
+
+---------------------------------------------
+ Run case  13:  AoA6                 
+
+ alpha        ->  alpha       =   6.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000        
+
+---------------------------------------------
+ Run case  14:  AoA7                 
+
+ alpha        ->  alpha       =   7.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000     
+
+---------------------------------------------
+ Run case  15:  AoA8                 
+
+ alpha        ->  alpha       =   8.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000      
+
+---------------------------------------------
+ Run case  16:  AoA9                 
+
+ alpha        ->  alpha       =   9.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000     
+
+---------------------------------------------
+ Run case  17:  AoA10                 
+
+ alpha        ->  alpha       =   10.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000     
+
+---------------------------------------------
+ Run case  18:  AoA11                 
+
+ alpha        ->  alpha       =   11.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000     
+
+---------------------------------------------
+ Run case  19:  AoA12                 
+
+ alpha        ->  alpha       =   12.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000     
+
+---------------------------------------------
+ Run case  20:  AoA13                 
+
+ alpha        ->  alpha       =   13.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000     
+
+---------------------------------------------
+ Run case  21:  AoA14                 
+
+ alpha        ->  alpha       =   14.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000     
+
+---------------------------------------------
+ Run case  22:  AoA15                 
+
+ alpha        ->  alpha       =   15.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000     
+
+---------------------------------------------
+ Run case  23:  AoA16                 
+
+ alpha        ->  alpha       =   16.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000     
+
+---------------------------------------------
+ Run case  24:  AoA17                 
+
+ alpha        ->  alpha       =   17.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000     
+
+---------------------------------------------
+ Run case  25:  AoA18                 
+
+ alpha        ->  alpha       =   18.00000       
+                             
+ beta      =  0.00000 deg                             
+ pb/2V     =  0.00000                                 
+ qc/2V     =  0.00000                                     
+ rb/2V     =  0.00000                                                                                                    
+ bank      =  0.00000 deg                             
+ elevation =  0.00000 deg                             
+ heading   =  0.00000 deg                             
+ Mach      =  0.00000                                     
+ velocity  =  0.0000 m/s                             
+ density   =  1.10000 kg/m^3                          
+ grav.acc. =  9.81000 m/s^2                           
+ turn_rad. =  0.00000 m                                                                                             
+ visc CL_a =  0.00000                                     
+ visc CL_u =  0.00000                                     
+ visc CM_a =  0.00000                                     
+ visc CM_u =  0.00000     
