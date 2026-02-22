@@ -4,3 +4,7 @@ __pycache__/
 
 # --- Image Outputs ---
 *.png
+*.pdf
+
+# --- Sensitive data ---
+*.csv

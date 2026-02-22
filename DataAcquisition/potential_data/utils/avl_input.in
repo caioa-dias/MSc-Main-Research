@@ -1,0 +1,99 @@
+load LAE2008Model.avl
+oper
+a a -4
+x
+FS
+AoA-4.csv
+a a -3
+x
+FS
+AoA-3.csv
+a a -2
+x
+FS
+AoA-2.csv
+a a -1
+x
+FS
+AoA-1.csv
+a a 0
+x
+FS
+AoA0.csv
+a a 1
+x
+FS
+AoA1.csv
+a a 2
+x
+FS
+AoA2.csv
+a a 3
+x
+FS
+AoA3.csv
+a a 4
+x
+FS
+AoA4.csv
+a a 5
+x
+FS
+AoA5.csv
+a a 6
+x
+FS
+AoA6.csv
+a a 7
+x
+FS
+AoA7.csv
+a a 8
+x
+FS
+AoA8.csv
+a a 9
+x
+FS
+AoA9.csv
+a a 10
+x
+FS
+AoA10.csv
+a a 11
+x
+FS
+AoA11.csv
+a a 12
+x
+FS
+AoA12.csv
+a a 13
+x
+FS
+AoA13.csv
+a a 14
+x
+FS
+AoA14.csv
+a a 15
+x
+FS
+AoA15.csv
+a a 16
+x
+FS
+AoA16.csv
+a a 17
+x
+FS
+AoA17.csv
+a a 18
+x
+FS
+AoA18.csv
+
+quit
+
+
+

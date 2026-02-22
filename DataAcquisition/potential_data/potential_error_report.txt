@@ -1,0 +1,19 @@
+
+ABSOLUTE ERROR ANALYSIS REPORT - Cl CALCULATION
+===========================================================
+Date: 2026-02-21 00:58:39
+
+1. GLOBAL ERROR STATISTICS
+----------------------------------
+Tolerance adopted: 0.0095.
+Total observations: 66320.
+Observations above tolerance: 4.
+Percentage above tolerance: 0.01%.
+
+2. OBSERVATIONS ABOVE TOLERANCE
+----------------------------------
+Re=180000     | AoA=12     | y=0.0883   | Cl=1.4038     | AbsError=0.025364
+Re=180000     | AoA=12     | y=0.1273   | Cl=1.3995     | AbsError=0.009505
+Re=200000     | AoA=12     | y=0.0687   | Cl=1.4054     | AbsError=0.028855
+Re=200000     | AoA=12     | y=0.0883   | Cl=1.4038     | AbsError=1.418442
+===========================================================
