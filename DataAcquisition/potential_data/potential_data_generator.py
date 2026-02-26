@@ -4,8 +4,8 @@
 Module: potential_data_generator
 Author: Caio Dias Filho
 Creation date: 2025-11-25
-Last modification: 2026-02-19
-Version: 1.4
+Last modification: 2026-02-24
+Version: 1.5
 ========================================================================================================
 
 OVERVIEW
@@ -83,6 +83,8 @@ step_Reynolds = 2*(10**4)
 # Angle of Attack range:
 initial_AoA = -4
 final_AoA = 18
+# Percentage below the Cl_max for stall margin:
+stall_margin = 0.1
 
 # --- Analysis Options ---
 # Generating new potential cases:
@@ -473,7 +475,8 @@ def main(new_cases:bool, Re_range:list, AoA_filter:bool, AoA_range:list, b_wing:
     linear_cases = []
     for Re, group in data.groupby('Re'):
         # Identify first stall occurence:
-        stall_condition = group['cl'] > group['cl_max']
+        stall_limit = group['cl_max'] * (1 - stall_margin)
+        stall_condition = group['cl'] > stall_limit
         if stall_condition.any():
             stall_aoa = group.loc[stall_condition, 'AoA'].iloc[0]
             group = group[group['AoA'] < stall_aoa]

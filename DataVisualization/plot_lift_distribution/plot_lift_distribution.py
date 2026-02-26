@@ -93,25 +93,19 @@ import numpy as np
 
 def select_data_file():
     """
-    Open a graphical file selection dialog to choose the Optuna trials dataset.
+    Open graphical file selection dialogs to choose an aerodynamic datasets.
 
-    This function uses Tkinter to prompt the user to select a .csv file containing the results of a
-    hyperparameter optimization study.
+    This function uses Tkinter to prompt the user to select a .csv file. .
 
     Returns
     -------
-    str
-        Absolute path to the selected file.
+    file_path : str
+        A string containing the absolute path to the selected file.
 
     Side Effects
     ------------
-    - Opens a graphical file dialog window.
+    - Opens a graphical file dialog windows.
     - Requires a GUI-enables environment.
-
-    Notes
-    -----
-    - The selected file must correspond to an exported Optuna trials dataset.
-    - The function does not validate the file content.
     """
 
     # Open a file selection dialog:
@@ -213,11 +207,11 @@ def plot_lift_distribution(data_path: str):
             ax.text(-0.95, 1.68, re_text, fontsize=7, ha='left', va='top')
                      
         # --- Labels ---
-        ax.set_xlabel(f'Normalized spanwise position ($y/b$)', fontsize=9, fontname='Times New Roman')
-        ax.set_ylabel(f'Sectional lift coefficient ($C_l$)', fontsize=9, fontname='Times New Roman')
+        ax.set_xlabel(f'Normalized spanwise position ($y/b$)', fontsize=8, fontname='Times New Roman')
+        ax.set_ylabel(f'Sectional lift coefficient ($C_l$)', fontsize=8, fontname='Times New Roman')
 
         # --- Ticks ---
-        ax.tick_params(axis='both', which='major', labelsize=7, width=0.8, direction='in')
+        ax.tick_params(axis='both', which='major', labelsize=6, width=0.8, direction='in')
 
         # --- Grid ---
         ax.grid(True, which='major', linestyle='--', linewidth=0.5, alpha=0.4)

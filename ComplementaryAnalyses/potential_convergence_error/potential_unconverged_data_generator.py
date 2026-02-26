@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 ========================================================================================================
-Module: potential_tolerance_validator
+Module: potential_unconverged_data_generator
 Author: Caio Dias Filho
 Creation date: 2026-02-21
 Last modification: 2026-02-22
@@ -335,10 +335,10 @@ Percentage above tolerance: {percentage:.2f}%.
     content += "\n===========================================================\n"
 
     # 5. Write the report to disk:
-    with open('potential_error_report.txt', "w", encoding="utf-8") as f:
+    with open('potential_unconverged_error_report.txt', "w", encoding="utf-8") as f:
         f.write(content)
 
-    print(f"\nValidation report saved to: 'potential_error_report.txt'.\n")
+    print(f"\nValidation report saved to: 'potential_unconverged_error_report.txt'.\n")
 
     return errors.index
 
@@ -385,8 +385,8 @@ def main():
 
     # 3. Assemble and save the generated dataset:
     dataset = pd.concat(Results, ignore_index=True)
-    dataset.to_csv('Potential-PostStallData.csv', index=False, sep=';')
-    print(f"\nDataset successfully generated and saved to 'Potential-PostStallData.csv'.\n")
+    dataset.to_csv('Potential-UnconvergedData.csv', index=False, sep=';')
+    print(f"\nDataset successfully generated and saved to 'Potential-UnconvergedData.csv'.\n")
 
     print('Starting tolerance validation on post-stall dataset...\n')
 

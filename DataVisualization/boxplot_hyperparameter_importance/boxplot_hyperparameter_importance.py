@@ -211,8 +211,8 @@ def plot_parameter_impact(data_path: str, param_name: str, x_label: str, save_pa
         if param_name in ['n_layers', 'units_layer1', 'units_layer2', 'units_layer3', 'units_layer4',
                             'units_layer5', 'units_layer6', 'units_layer7']:
             data_plot[col_param] = data_plot[col_param].astype(int)
-        ax.tick_params(axis='both', which='major', labelsize=7, width=0.8, direction='in')
-        ax.tick_params(axis='both', which='minor', labelsize=7, width=0.8, direction='in')
+        ax.tick_params(axis='both', which='major', labelsize=6, width=0.8, direction='in')
+        ax.tick_params(axis='both', which='minor', labelsize=6, width=0.8, direction='in')
         ax.ticklabel_format(axis='y', style='sci', scilimits=(0, 0), useMathText=True)
         ax.yaxis.get_offset_text().set_fontsize(7)
 
@@ -226,8 +226,8 @@ def plot_parameter_impact(data_path: str, param_name: str, x_label: str, save_pa
             meanprops={'marker': 's', 'mfc': 'white', 'mec': 'black', 'markersize': 3, 'mew': 0.5},)
     
         # --- Labels ---
-        ax.set_xlabel(x_label, fontsize=9, fontname='Times New Roman')
-        ax.set_ylabel('Mean validation loss (MSE)', fontsize=9, fontname='Times New Roman')
+        ax.set_xlabel(x_label, fontsize=8, fontname='Times New Roman')
+        ax.set_ylabel('Mean validation loss (MSE)', fontsize=8, fontname='Times New Roman')
 
         # --- Grid ---
         ax.grid(True, which='major', axis='y', linestyle='--', linewidth=0.5, alpha=0.2)
@@ -235,7 +235,7 @@ def plot_parameter_impact(data_path: str, param_name: str, x_label: str, save_pa
         # --- Legend ---
         legend_handles = [mlines.Line2D([], [], color='black', linewidth=1.0, label='Median'),
             mlines.Line2D([], [], color='white', marker='s', mfc='white', mec='black', markersize=3, label='Mean')]
-        plt.legend(handles=legend_handles, loc='upper right', fontsize=7, frameon=True, framealpha=1, edgecolor='black')
+        plt.legend(handles=legend_handles, loc='upper right', fontsize=6, edgecolor='black', fancybox=False)
 
         # --- Limits ---
         ax.set_ylim(0, upper_bound)
@@ -244,7 +244,7 @@ def plot_parameter_impact(data_path: str, param_name: str, x_label: str, save_pa
         plt.tight_layout(pad=0.6)
         plt.savefig(f'{save_path}_single.pdf', dpi=600)
         plt.close()
-        print(f'\nPlot saved as {save_path}_single.pdf.')
+        print(f'\nPlot saved as {save_path}_single.pdf.\n')
 
 
     # ===================================================================================================

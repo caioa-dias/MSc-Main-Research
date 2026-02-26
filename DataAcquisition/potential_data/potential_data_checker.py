@@ -62,7 +62,7 @@ NOTES
 
 # --- Validation parameters ---
 # Physical tolerance for |ΔCl|:
-tolerance = 0.0095
+tolerance = 0.01
 
 
 # =======================================================================================================
@@ -203,14 +203,13 @@ def generate_error_report(results:pd.DataFrame, tolerance:float):
     percentage = 100 * n_errors / total
 
     # 3. Assemble the report header and statistics:
-    content = f"""
-ABSOLUTE ERROR ANALYSIS REPORT - Cl CALCULATION
+    content = f"""ABSOLUTE ERROR ANALYSIS REPORT - Cl CALCULATION
 ===========================================================
 Date: {time.strftime("%Y-%m-%d %H:%M:%S")}
 
 1. GLOBAL ERROR STATISTICS
 ----------------------------------
-Tolerance adopted: {tolerance:.4f}.
+Tolerance adopted: {tolerance:.2f}.
 Total observations: {total}.
 Observations above tolerance: {n_errors}.
 Percentage above tolerance: {percentage:.2f}%.
@@ -286,12 +285,12 @@ def main():
     filtered_dataset = dataset.drop(index=indices_to_remove)
 
     # 6. Print the final validation results:
-    print(f'Original post-stall dataset size (without NaNs): {len(dataset)} observations.')
+    print(f'Original dataset size (without NaNs): {len(dataset)} observations.')
     print(f'Observations identified as non-converged (above tolerance): {len(indices_to_remove)} observations.')
     print(f'Observations physically consistent (below tolerance): {len(filtered_dataset)} observations.')
 
     # 7. Save the filtered dataset:
-    filtered_dataset.to_csv('Potential-PressureDistributionData.csv', index=False, sep=';')
+    filtered_dataset.to_csv('Potential-PressureDistributionData-Filtered.csv', index=False, sep=';')
 
     print("\nFiltered dataset saved to: 'Potential-PressureDistributionData_filtered.csv'.\n")
     print('Dataset validation completed successfully!\n')

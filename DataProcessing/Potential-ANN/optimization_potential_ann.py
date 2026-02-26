@@ -633,7 +633,7 @@ def save_results(study: optuna.Study, execution_time: float):
         ax.set_ylim(0, 7.5e-3)
 
         # --- Legend ---
-        ax.legend(fontsize=7, frameon=True, framealpha=1.0, edgecolor='black', loc='upper right')
+        ax.legend(fontsize=7, fancybox=False, edgecolor='black', loc='upper right')
 
         # --- Save ---
         plt.tight_layout(pad=0.6)
@@ -675,7 +675,7 @@ def save_results(study: optuna.Study, execution_time: float):
         ax.set_ylim(0, 7.5e-3)
 
         # --- Legend ---
-        ax.legend(fontsize=9, frameon=True, framealpha=1.0, edgecolor='black', loc='upper right')
+        ax.legend(fontsize=9, fancybox=False, edgecolor='black', loc='upper right')
 
         # --- Save ---
         plt.tight_layout(pad=0.6)
