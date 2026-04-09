@@ -44,8 +44,8 @@ OUTPUT FILES
 Two figures are generated ans saved inside:
 
     plot_parameter_space/
-    - parameter_space_single.pdf (600 dpi)
-    - parameter_space_double.pdf (600 dpi)
+    - parameter_space_single.png (600 dpi)
+    - parameter_space_double.png (600 dpi)
 
 ========================================================================================================
 """
@@ -56,10 +56,10 @@ Two figures are generated ans saved inside:
 
 # --- Plot aesthetics ---
 # Data label: 'Low-Fidelity Observations', 'Medium-Fidelity Observations', 'High-Fidelity Observations':
-data_label = ['Low-Fidelity Observations']
+data_label = ['Low-fidelity flow cases']
 
 # Marker color for different fidelities:
-marker_color = ['#4682B4']
+marker_color = ['#000080']
 
 # Output file name:
 output_file = 'low_fidelity_parameter_space'
@@ -79,6 +79,7 @@ import matplotlib.pyplot as plt
 from tkinter import filedialog
 import tkinter as tk
 import pandas as pd
+import matplotlib
 
 
 def select_data_file():
@@ -150,7 +151,7 @@ def plot_parameter_space(data_path: list):
     Returns
     -------
     None
-        The function saves two .pdf figures to the 'plot_parameter_space/' directory.
+        The function saves two .png figures to the 'plot_parameter_space/' directory.
 
     Side Effects
     ------------
@@ -180,40 +181,50 @@ def plot_parameter_space(data_path: list):
         fig, ax = plt.subplots(figsize=(3.35, 2.55))
 
         # --- Plot ---
-        ax.scatter(dataset['AoA'], dataset['Re']/1e6, alpha=0.8, s=2, 
-            facecolors=marker_color[0], edgecolors='#000000', linewidth=0.1, label=data_label[0])
+        ax.scatter(dataset['AoA'], dataset['Re'], alpha=0.8, s=2, 
+            facecolors=marker_color[0], edgecolors='#000000', linewidth=0.01, label=data_label[0])
         
         if (two_fidelities or three_fidelities) == True:
-            ax.scatter(dataset['AoA'], dataset['Re']/1e6, alpha=0.8, s=2, 
-                facecolors=marker_color[1], edgecolors='#000000', linewidth=0.1, label=data_label[1])
+            ax.scatter(dataset['AoA'], dataset['Re'], alpha=0.8, s=2, 
+                facecolors=marker_color[1], edgecolors='#000000', linewidth=0.01, label=data_label[1])
             
         if three_fidelities == True:
-            ax.scatter(dataset['AoA'], dataset['Re']/1e6, alpha=0.8, s=2, 
-                facecolors=marker_color[2], edgecolors='#000000', linewidth=0.1, label=data_label[2])
+            ax.scatter(dataset['AoA'], dataset['Re'], alpha=0.8, s=2, 
+                facecolors=marker_color[2], edgecolors='#000000', linewidth=0.01, label=data_label[2])
 
         # --- Labels ---
-        ax.set_xlabel(r'Angle of Attack ($AoA$) [$^\circ$]', fontsize=8, fontname='Times New Roman')
-        ax.set_ylabel(r'Reynolds Number ($Re$) $~\times 10^{-6}$', fontsize=8, fontname='Times New Roman')
+        ax.set_ylabel(r'Reynolds number ($Re$)', fontsize=8, fontname='Times New Roman', labelpad=10)
+        ax.set_xlabel(r'Angle of attack ($\alpha$) [$^\circ$]', fontsize=8, fontname='Times New Roman', labelpad=10)
 
         # --- Ticks ---
-        ax.tick_params(axis='both', which='major', labelsize=6, width=0.8, direction='in')
+        for spine in ax.spines.values():
+            spine.set_linewidth(0.5)
+        ax.tick_params(axis='both', which='major', labelsize=6, width=0.4, direction='in')
         ax.xaxis.set_major_locator(MultipleLocator(2))
 
         # --- Grid ---
-        ax.grid(True, which='major', linestyle='--', linewidth=0.5, alpha=0.4)
+        ax.grid(True, which='major', linestyle='--', linewidth=0.5, alpha=0.3)
 
         # --- Limits ---
         ax.set_xlim([-5, 13])
-        ax.set_ylim([0.05, 1.3])
+        ax.set_ylim([0, 1300000])
+        formatter = matplotlib.ticker.ScalarFormatter(useMathText=True)
+        formatter.set_scientific(True)
+        formatter.set_powerlimits((5, 5))
+        ax.yaxis.set_major_formatter(formatter)
+        ax.set_yticks([0, 2e5, 4e5, 6e5, 8e5, 1e6])
+        ax.yaxis.get_offset_text().set_fontsize(6)
+        ax.yaxis.get_offset_text().set_y(1.02)
 
         # --- Legend ---
-        ax.legend(fontsize=6, fancybox=False,edgecolor='black', loc='upper right', markerscale=2.0)
+        legend = ax.legend(fontsize=6, fancybox=False,edgecolor='black', loc='upper right', markerscale=2.0)
+        legend.get_frame().set_linewidth(0.5)
 
         # --- Save ---
         plt.tight_layout(pad=0.6)
-        plt.savefig(f'plot_parameter_space/{output_file}_single.pdf', dpi=600)
+        plt.savefig(f'plot_parameter_space/{output_file}_single.png', dpi=600)
         plt.close()
-        print(f'\nPlot saved as plot_parameter_space/{output_file}_single.pdf.')
+        print(f'\nPlot saved as plot_parameter_space/{output_file}_single.png.')
 
     
     # ===================================================================================================
@@ -227,40 +238,47 @@ def plot_parameter_space(data_path: list):
         fig, ax = plt.subplots(figsize=(6.7, 4.8))
 
         # --- Plot ---
-        ax.scatter(dataset['AoA'], dataset['Re']/1e6, alpha=0.8, s=6, 
+        ax.scatter(dataset['AoA'], dataset['Re'], alpha=0.8, s=6, 
             facecolors=marker_color[0], edgecolors='#000000', linewidth=0.1, label=data_label[0])
         
         if (two_fidelities or three_fidelities) == True:
-            ax.scatter(dataset['AoA'], dataset['Re']/1e6, alpha=0.8, s=6, 
+            ax.scatter(dataset['AoA'], dataset['Re'], alpha=0.8, s=6, 
                 facecolors=marker_color[1], edgecolors='#000000', linewidth=0.1, label=data_label[1])
             
         if three_fidelities == True:
-            ax.scatter(dataset['AoA'], dataset['Re']/1e6, alpha=0.8, s=6, 
+            ax.scatter(dataset['AoA'], dataset['Re'], alpha=0.8, s=6, 
                 facecolors=marker_color[2], edgecolors='#000000', linewidth=0.1, label=data_label[2])
 
         # --- Labels ---
-        ax.set_xlabel(r'Angle of Attack ($AoA$) [$^\circ$]', fontsize=11, fontname='Times New Roman')
-        ax.set_ylabel(r'Reynolds Number ($Re$) $~\times 10^{-6}$', fontsize=11, fontname='Times New Roman')
+        ax.set_xlabel(r'Angle of attack ($\alpha$) [$^\circ$]', fontsize=18, labelpad=10, fontname='Times New Roman')
+        ax.set_ylabel(r'Reynolds number ($Re$)', fontsize=18, labelpad=10, fontname='Times New Roman')
 
         # --- Ticks ---
-        ax.tick_params(axis='both', which='major', labelsize=10, width=0.8, direction='in')
+        ax.tick_params(axis='both', which='major', labelsize=14, width=0.8, direction='in')
         ax.xaxis.set_major_locator(MultipleLocator(2))
 
         # --- Grid ---
-        ax.grid(True, which='major', linestyle='--', linewidth=0.6, alpha=0.4)
+        ax.grid(True, which='major', linestyle='--', linewidth=0.6, alpha=0.3)
 
         # --- Limits ---
         ax.set_xlim([-5, 13])
-        ax.set_ylim([0.05, 1.3])
+        ax.set_ylim([0, 1300000])
+        formatter = matplotlib.ticker.ScalarFormatter(useMathText=True)
+        formatter.set_scientific(True)
+        formatter.set_powerlimits((5, 5))
+        ax.yaxis.set_major_formatter(formatter)
+        ax.set_yticks([0, 2e5, 4e5, 6e5, 8e5, 1e6])
+        ax.yaxis.get_offset_text().set_fontsize(14)
+        ax.yaxis.get_offset_text().set_y(1.02)
 
         # --- Legend ---
-        ax.legend(fontsize=10, fancybox=False,edgecolor='black', loc='upper right', markerscale=2.0)
+        ax.legend(fontsize=16, fancybox=False,edgecolor='black', loc='upper right', markerscale=2.0, handletextpad=0.1)
 
         # --- Save ---
         plt.tight_layout(pad=0.6)
-        plt.savefig(f'plot_parameter_space/{output_file}_double.pdf', dpi=600)
+        plt.savefig(f'plot_parameter_space/{output_file}_double.png', dpi=600)
         plt.close()
-        print(f'\nPlot saved as plot_parameter_space/{output_file}_double.pdf.\n')
+        print(f'\nPlot saved as plot_parameter_space/{output_file}_double.png.\n')
     
     return
 
@@ -273,7 +291,7 @@ def main():
         fidelity levels.
         2) Load and validate the file paths for low, medium and high fidelity data.
         3) Generate both single-column and double-column parameter space figures (AoA vs. Re).
-        4) Save the resulting high-resolution figures in .pdf format.
+        4) Save the resulting high-resolution figures in .png format.
 
     Returns
     -------
@@ -283,7 +301,7 @@ def main():
     ------------
     - Opens one or more graphical file selection dialogs depending on fidelity settings.
     - Reads aerodynamic datasets from disk.
-    - Saves two images (.pdf) to disk.
+    - Saves two images (.png) to disk.
     - Prints execution status and file paths to the console.
 
     Notes
