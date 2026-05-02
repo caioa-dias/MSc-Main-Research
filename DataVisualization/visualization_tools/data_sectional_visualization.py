@@ -127,7 +127,7 @@ def main(data_path: str, Re: int, AoA: int, scatter: bool, is_exp: bool, out_pat
     # 1. Loads the data:
     print("\nStarting 3D visualization process...\n")
     print(f"Loading data from: {data_path}")
-    data = pd.read_csv(data_path, sep=',')
+    data = pd.read_csv(data_path, sep=';')
     print("Data loaded successfully.")
 
     # 2. Calls the 3D visualization function:
@@ -140,8 +140,8 @@ def main(data_path: str, Re: int, AoA: int, scatter: bool, is_exp: bool, out_pat
 if __name__ == "__main__":
 
     # 1. Sets the run parameters:
-    DATA_FILE = 'Numerical-PressureDistributionData.csv'
-    REYNOLDS_NUMBER = 235456
+    DATA_FILE = 'visualization_tools/utils/LowFidelity-PressureDistributionData.csv'
+    REYNOLDS_NUMBER = 230000
     ANGLE_OF_ATTACK = 10
     ENABLE_SCATTER = True
     IS_EXPERIMENTAL_DATA = False

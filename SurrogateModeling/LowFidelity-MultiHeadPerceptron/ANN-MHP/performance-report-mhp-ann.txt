@@ -1,0 +1,101 @@
+
+PERFORMANCE REPORT - low_fidelity_mhp_ann
+==========================================================
+Date: 2026-04-17 14:14:17
+Execution Time: 178.33 seconds
+
+
+1. CONFIGURATION
+----------------------------------
+Epochs: 140
+Input Shape: (11920, 3)
+Total Outputs: (11920, 202)
+Cl Outputs: (11920, 1)
+Cp Outputs: (11920, 201)
+
+
+2. DATASET SUMMARY
+----------------------------------
+Total samples: 59600
+Total flow cases: 745
+Sections per flow case: 80
+
+Training samples: 38080
+Training flow cases: 476
+
+Validation samples: 9600
+Validation flow cases: 120
+
+Testing samples: 11920
+Testing flow cases: 149
+
+
+3. OVERALL MODEL TEST PERFORMANCE
+----------------------------------
+R² Score: 0.99810
+MAE:      0.002924
+MSE:      0.000036
+RMSE:     0.005998
+
+
+4. CL TEST PERFORMANCE
+----------------------------------
+R² Score: 0.99998
+MAE:      0.000740
+MSE:      0.000003
+RMSE:     0.001750
+
+
+5. CP TEST PERFORMANCE
+----------------------------------
+R² Score: 0.99809
+MAE:      0.002935
+MSE:      0.000036
+RMSE:     0.006011
+
+
+6. FINAL LOSS RESULTS
+----------------------------------
+Best epoch: 140
+Final Total Loss (Training): 0.000369
+Final Total MSE Loss (Validation): 0.000454
+
+Final Cl MSE Loss (Training): 0.000022
+Final Cl MSE Loss (Validation): 0.000023
+Final Cl MAE (Training): 0.001920
+Final Cl MAE (Validation): 0.001970
+
+Final Cp MSE Loss (Training): 0.001736
+Final Cp MSE Loss (Validation): 0.002153
+Final Cp MAE (Training): 0.016440
+Final Cp MAE (Validation): 0.016927
+
+
+7. MODEL ARCHITECTURE
+----------------------------------
+Model: "low_fidelity_mhp_ann"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                  ┃ Output Shape              ┃         Param # ┃ Connected to               ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│ Input_Layer (InputLayer)      │ (None, 3)                 │               0 │ -                          │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ Hidden_Layer_1 (Dense)        │ (None, 160)               │             640 │ Input_Layer[0][0]          │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ Hidden_Layer_2 (Dense)        │ (None, 128)               │          20,608 │ Hidden_Layer_1[0][0]       │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ Hidden_Layer_3 (Dense)        │ (None, 192)               │          24,768 │ Hidden_Layer_2[0][0]       │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ Cl_Layer_1 (Dense)            │ (None, 128)               │          24,704 │ Hidden_Layer_3[0][0]       │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ Cp_Layer_1 (Dense)            │ (None, 128)               │          24,704 │ Hidden_Layer_3[0][0]       │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ Cl_Output (Dense)             │ (None, 1)                 │             129 │ Cl_Layer_1[0][0]           │
+├───────────────────────────────┼───────────────────────────┼─────────────────┼────────────────────────────┤
+│ Cp_Output (Dense)             │ (None, 201)               │          25,929 │ Cp_Layer_1[0][0]           │
+└───────────────────────────────┴───────────────────────────┴─────────────────┴────────────────────────────┘
+ Total params: 364,449 (1.39 MB)
+ Trainable params: 121,482 (474.54 KB)
+ Non-trainable params: 0 (0.00 B)
+ Optimizer params: 242,967 (949.09 KB)
+
+==========================================================
